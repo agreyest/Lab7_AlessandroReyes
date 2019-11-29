@@ -1,6 +1,12 @@
 package lab7_alessandroreyes;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -9,6 +15,8 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
+        
         AdminEstudiante e = new AdminEstudiante("./Estudiantes.cbm");
         e.cargarArchivo();
         estudiantes = e.getListaEstudiantes();
@@ -32,9 +40,47 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jd_crear_parada = new javax.swing.JDialog();
+        tf_crearP_nom = new javax.swing.JTextField();
+        btn_crearP_r = new javax.swing.JButton();
+        btn_crear_parada = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        js_distancia = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        js_angulo = new javax.swing.JSpinner();
         jd_crear_autobus = new javax.swing.JDialog();
+        tf_ab_numid = new javax.swing.JTextField();
+        tf_placa = new javax.swing.JTextField();
+        btn_color = new javax.swing.JButton();
+        js_velA_ = new javax.swing.JSpinner();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btn_crearA_r_ = new javax.swing.JButton();
+        btn_crearA_ = new javax.swing.JButton();
         jd_crear_estudiante = new javax.swing.JDialog();
+        tf_estu_nom = new javax.swing.JTextField();
+        js_edad = new javax.swing.JSpinner();
+        tf_numcuenta = new javax.swing.JTextField();
+        cb_paradas = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        btn_estu_r_ = new javax.swing.JButton();
+        btn_crearE = new javax.swing.JButton();
         jd_simulacion = new javax.swing.JDialog();
+        jLabel12 = new javax.swing.JLabel();
+        cb_listaB_ = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        cb_lista_estudiantes = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        btn_sim_r_ = new javax.swing.JButton();
+        btn_simulacion = new javax.swing.JButton();
+        btn_tabla = new javax.swing.JButton();
         jd_tabla = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_tabla = new javax.swing.JTable();
@@ -46,48 +92,310 @@ public class Principal extends javax.swing.JFrame {
         jmi_crear_estudiante = new javax.swing.JMenuItem();
         jmi_simulacion = new javax.swing.JMenuItem();
 
+        btn_crearP_r.setText("Regresar");
+        btn_crearP_r.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_crearP_rMouseClicked(evt);
+            }
+        });
+
+        btn_crear_parada.setText("Crear");
+        btn_crear_parada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_crear_paradaMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre de la parada");
+
+        jLabel2.setText("Distancia en km.");
+
+        jLabel3.setText("Angulo");
+
         javax.swing.GroupLayout jd_crear_paradaLayout = new javax.swing.GroupLayout(jd_crear_parada.getContentPane());
         jd_crear_parada.getContentPane().setLayout(jd_crear_paradaLayout);
         jd_crear_paradaLayout.setHorizontalGroup(
             jd_crear_paradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 749, Short.MAX_VALUE)
+            .addGroup(jd_crear_paradaLayout.createSequentialGroup()
+                .addGroup(jd_crear_paradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_crear_paradaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_crearP_r, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_crear_paradaLayout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addGroup(jd_crear_paradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(js_angulo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(tf_crearP_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(js_distancia, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(btn_crear_parada, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jd_crear_paradaLayout.setVerticalGroup(
             jd_crear_paradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crear_paradaLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_crearP_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(js_distancia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(js_angulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addGroup(jd_crear_paradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_crear_parada, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(btn_crearP_r, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        btn_color.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_colorMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setText("Color");
+
+        jLabel5.setText("Numero de identificacion");
+
+        jLabel6.setText("Placa");
+
+        jLabel7.setText("Velocidad");
+
+        btn_crearA_r_.setText("Regresar");
+        btn_crearA_r_.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_crearA_r_MouseClicked(evt);
+            }
+        });
+
+        btn_crearA_.setText("Crear");
+        btn_crearA_.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_crearA_MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_crear_autobusLayout = new javax.swing.GroupLayout(jd_crear_autobus.getContentPane());
         jd_crear_autobus.getContentPane().setLayout(jd_crear_autobusLayout);
         jd_crear_autobusLayout.setHorizontalGroup(
             jd_crear_autobusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 746, Short.MAX_VALUE)
+            .addGroup(jd_crear_autobusLayout.createSequentialGroup()
+                .addGroup(jd_crear_autobusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_crear_autobusLayout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addGroup(jd_crear_autobusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addGroup(jd_crear_autobusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tf_placa, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                                .addComponent(tf_ab_numid))
+                            .addGroup(jd_crear_autobusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btn_color, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                                .addComponent(js_velA_, javax.swing.GroupLayout.Alignment.LEADING))))
+                    .addGroup(jd_crear_autobusLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_crearA_r_, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(btn_crearA_, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jd_crear_autobusLayout.setVerticalGroup(
             jd_crear_autobusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addGroup(jd_crear_autobusLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_ab_numid, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_placa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_color, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(js_velA_, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addGroup(jd_crear_autobusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_crearA_r_, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_crearA_, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        jLabel8.setText("Nombre del estudiante");
+
+        jLabel9.setText("Edad");
+
+        jLabel10.setText("Numero de cuenta");
+
+        jLabel11.setText("Parada");
+
+        btn_estu_r_.setText("Regresar al menu");
+        btn_estu_r_.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_estu_r_MouseClicked(evt);
+            }
+        });
+
+        btn_crearE.setText("Crear estudiante");
+        btn_crearE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_crearEMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_crear_estudianteLayout = new javax.swing.GroupLayout(jd_crear_estudiante.getContentPane());
         jd_crear_estudiante.getContentPane().setLayout(jd_crear_estudianteLayout);
         jd_crear_estudianteLayout.setHorizontalGroup(
             jd_crear_estudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
+            .addGroup(jd_crear_estudianteLayout.createSequentialGroup()
+                .addGroup(jd_crear_estudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_crear_estudianteLayout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addGroup(jd_crear_estudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addGroup(jd_crear_estudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cb_paradas, 0, 406, Short.MAX_VALUE)
+                                .addComponent(tf_numcuenta)
+                                .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tf_estu_nom))))
+                    .addGroup(jd_crear_estudianteLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_estu_r_)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(btn_crearE)
+                .addContainerGap())
         );
         jd_crear_estudianteLayout.setVerticalGroup(
             jd_crear_estudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crear_estudianteLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_estu_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_numcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_paradas, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addGroup(jd_crear_estudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_crearE, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(btn_estu_r_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        jLabel12.setText("Escoja el bus");
+
+        cb_listaB_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_listaB_ActionPerformed(evt);
+            }
+        });
+
+        jList1.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(jList1);
+
+        jLabel13.setText("Lista de estudiantes en el bus");
+
+        jLabel14.setText("Estudiantes");
+
+        btn_sim_r_.setText("Regresar al menu");
+        btn_sim_r_.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_sim_r_MouseClicked(evt);
+            }
+        });
+
+        btn_simulacion.setText("Empezar simulacion");
+        btn_simulacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_simulacionMouseClicked(evt);
+            }
+        });
+
+        btn_tabla.setText("Ver tabla");
+        btn_tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tablaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_simulacionLayout = new javax.swing.GroupLayout(jd_simulacion.getContentPane());
         jd_simulacion.getContentPane().setLayout(jd_simulacionLayout);
         jd_simulacionLayout.setHorizontalGroup(
             jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 752, Short.MAX_VALUE)
+            .addGroup(jd_simulacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                        .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_simulacionLayout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE))
+                            .addGroup(jd_simulacionLayout.createSequentialGroup()
+                                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel12)
+                                    .addComponent(cb_lista_estudiantes, 0, 260, Short.MAX_VALUE)
+                                    .addComponent(cb_listaB_, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)))
+                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                        .addComponent(btn_sim_r_)
+                        .addGap(209, 209, 209)
+                        .addComponent(btn_tabla)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_simulacion)))
+                .addContainerGap())
         );
         jd_simulacionLayout.setVerticalGroup(
             jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+            .addGroup(jd_simulacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                        .addComponent(cb_listaB_, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_lista_estudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
+                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_sim_r_)
+                    .addComponent(btn_simulacion)
+                    .addComponent(btn_tabla))
+                .addContainerGap())
         );
 
         jt_tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -108,7 +416,12 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jt_tabla);
 
-        btn_tabla_r.setText("Regresar");
+        btn_tabla_r.setText("Regresar a la simulacion");
+        btn_tabla_r.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tabla_rMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_tablaLayout = new javax.swing.GroupLayout(jd_tabla.getContentPane());
         jd_tabla.getContentPane().setLayout(jd_tablaLayout);
@@ -121,7 +434,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jd_tablaLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btn_tabla_r, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_tabla_r)))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         jd_tablaLayout.setVerticalGroup(
@@ -144,15 +457,35 @@ public class Principal extends javax.swing.JFrame {
         Acciion.setText("Accion");
 
         jmi_crear_parada.setText("Crear parada");
+        jmi_crear_parada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_crear_paradaActionPerformed(evt);
+            }
+        });
         Acciion.add(jmi_crear_parada);
 
         jmi_crear_autobus.setText("Crear autobus");
+        jmi_crear_autobus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_crear_autobusActionPerformed(evt);
+            }
+        });
         Acciion.add(jmi_crear_autobus);
 
         jmi_crear_estudiante.setText("Crear Estudiante");
+        jmi_crear_estudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_crear_estudianteActionPerformed(evt);
+            }
+        });
         Acciion.add(jmi_crear_estudiante);
 
         jmi_simulacion.setText("Simulacion");
+        jmi_simulacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_simulacionActionPerformed(evt);
+            }
+        });
         Acciion.add(jmi_simulacion);
 
         jMenuBar1.add(Acciion);
@@ -185,7 +518,217 @@ public class Principal extends javax.swing.JFrame {
         AdminParada p = new AdminParada("./Paradas.cbm");
         p.setListaParadas(paradas);
         p.escribirArchivo();
+        
+        SpinnerNumberModel YY = new SpinnerNumberModel();
+        YY.setMinimum(1);
+        YY.setValue(1);
+        YY.setMaximum(360);
+        js_angulo.setModel(YY);
+        SpinnerNumberModel XX = new SpinnerNumberModel();
+        XX.setMinimum(1);
+        XX.setValue(1);
+        js_distancia.setModel(XX);
+        
+        SpinnerNumberModel x = new SpinnerNumberModel();
+        x.setMinimum(1);
+        x.setValue(1);
+        js_velA_.setModel(x);
+        
+        SpinnerNumberModel y = new SpinnerNumberModel();
+        y.setMinimum(16);
+        y.setValue(16);
+        js_edad.setModel(y);
     }//GEN-LAST:event_formWindowClosing
+
+    private void jmi_crear_paradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_crear_paradaActionPerformed
+        btn_crear_parada.setBackground(Color.cyan);
+        this.setVisible(false);
+        jd_crear_parada.setModal(true);
+        jd_crear_parada.pack();
+        jd_crear_parada.setLocationRelativeTo(this);
+        jd_crear_parada.setVisible(true);
+        
+    }//GEN-LAST:event_jmi_crear_paradaActionPerformed
+
+    private void btn_crear_paradaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crear_paradaMouseClicked
+        boolean bandera = true;
+        if(tf_crearP_nom.getText()== null){
+            bandera = false;
+            JOptionPane.showMessageDialog(jd_crear_parada, "Tiene que ingresar un nombre.");
+        }
+        for (int i = 0; i < paradas.size(); i++) {
+            if (tf_crearP_nom.getText().equals(paradas.get(i).getNombre())) {
+                bandera = false;
+                JOptionPane.showMessageDialog(jd_crear_parada, "No se puede repetir el nombre de la parada.");
+                tf_crearP_nom.setText("");
+                break;
+            }
+        }
+        if (bandera) {
+            Parada p = new Parada(tf_crearP_nom.getText(), js_distancia.getComponentCount(), js_angulo.getComponentCount());
+            paradas.add(p);
+            JOptionPane.showMessageDialog(jd_crear_parada, "Parada creada con exito.");
+            js_distancia.setValue(1);
+            js_angulo.setValue(1);
+            tf_crearP_nom.setText("");
+        }
+    }//GEN-LAST:event_btn_crear_paradaMouseClicked
+
+    private void btn_crearP_rMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearP_rMouseClicked
+        js_distancia.setValue(1);
+        js_angulo.setValue(1);
+        tf_crearP_nom.setText("");
+        jd_crear_parada.setModal(false);
+        jd_crear_parada.setVisible(false);
+        this.setVisible(true);
+        this.pack();
+        this.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btn_crearP_rMouseClicked
+
+    private void jmi_crear_autobusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_crear_autobusActionPerformed
+        this.setVisible(false);
+        jd_crear_autobus.setModal(true);
+        jd_crear_autobus.pack();
+        jd_crear_autobus.setLocationRelativeTo(this);
+        jd_crear_autobus.setVisible(true);
+    }//GEN-LAST:event_jmi_crear_autobusActionPerformed
+
+    private void btn_crearA_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearA_MouseClicked
+        boolean bandera = true;
+        if(tf_ab_numid.getText()== null){
+            bandera = false;
+            JOptionPane.showMessageDialog(jd_crear_autobus, "Tiene que ingresar un numero de identificacion.");
+        }
+        if(tf_placa.getText()== null){
+            bandera = false;
+            JOptionPane.showMessageDialog(jd_crear_autobus, "Tiene que ingresar una placa.");
+            
+        }
+        for (int i = 0; i < autobuses.size(); i++) {
+            if (tf_placa.getText().equals(autobuses.get(i).getPlaca())) {
+                bandera = false;
+                JOptionPane.showMessageDialog(jd_crear_autobus, "No se puede repetir la placa");
+                tf_placa.setText("");
+                break;
+            }
+        }
+        for (int i = 0; i < autobuses.size(); i++) {
+            if (tf_ab_numid.getText().equals(autobuses.get(i).getNumid())) {
+                bandera = false;
+                JOptionPane.showMessageDialog(jd_crear_autobus, "No se puede repetir un numero de identificacion");
+                tf_ab_numid.setText("");
+                break;
+            }
+        }
+        if (bandera) {
+            Autobus a = new Autobus(Integer.parseInt(tf_ab_numid.getText()), tf_placa.getText(),
+                    btn_color.getBackground(), js_velA_.getComponentCount());
+            autobuses.add(a);
+            JOptionPane.showMessageDialog(jd_crear_autobus, "Autobus creado con exito.");
+            js_velA_.setValue(1);
+            tf_ab_numid.setText("");
+            tf_placa.setText("");
+        }
+    }//GEN-LAST:event_btn_crearA_MouseClicked
+
+    private void btn_colorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_colorMouseClicked
+        btn_color.setBackground(JColorChooser.showDialog(this, "seleccione un color", Color.yellow));
+    }//GEN-LAST:event_btn_colorMouseClicked
+
+    private void btn_crearA_r_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearA_r_MouseClicked
+        js_velA_.setValue(1);
+        tf_ab_numid.setText("");
+        tf_placa.setText("");
+        jd_crear_autobus.setModal(false);
+        jd_crear_autobus.setVisible(false);
+        this.setVisible(true);
+        this.pack();
+        this.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btn_crearA_r_MouseClicked
+
+    private void jmi_crear_estudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_crear_estudianteActionPerformed
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(paradas.toArray());
+        cb_paradas.setModel(modelo);
+        this.setVisible(false);
+        jd_crear_estudiante.setModal(true);
+        jd_crear_estudiante.pack();
+        jd_crear_estudiante.setLocationRelativeTo(this);
+        jd_crear_estudiante.setVisible(true);
+    }//GEN-LAST:event_jmi_crear_estudianteActionPerformed
+
+    private void btn_crearEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearEMouseClicked
+         boolean bandera = true;
+        if(tf_estu_nom.getText()== null){
+            bandera = false;
+            JOptionPane.showMessageDialog(jd_crear_autobus, "Cual es el nombre del estudiante");
+        }
+        if(tf_numcuenta.getText()== null){
+            bandera = false;
+            JOptionPane.showMessageDialog(jd_crear_autobus, "Cual es el # de cuenta del estudiante");
+        }
+        for (int i = 0; i < estudiantes.size(); i++) {
+            if (Integer.parseInt(tf_numcuenta.getText()) == estudiantes.get(i).getCuenta()) {
+                bandera = false;
+                JOptionPane.showMessageDialog(jd_crear_autobus, "No se pueden repetir los numeros de cuenta");
+                break;
+            }
+        }
+        if (bandera) {
+            Estudiante e = new Estudiante(tf_estu_nom.getText(), js_edad.getComponentCount(),
+                    Integer.parseInt(tf_numcuenta.getText()), paradas.get(cb_paradas.getSelectedIndex()));
+            estudiantes.add(e);
+            
+            JOptionPane.showMessageDialog(jd_crear_autobus, "El estudiante fue creado con exito");
+            tf_estu_nom.setText("");
+            js_edad.setValue(16);
+            tf_numcuenta.setText("");
+            cb_paradas.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_btn_crearEMouseClicked
+
+    private void btn_estu_r_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_estu_r_MouseClicked
+        tf_estu_nom.setText("");
+        js_edad.setValue(16);
+        tf_numcuenta.setText("");
+        cb_paradas.setSelectedIndex(0);
+        jd_crear_estudiante.setModal(false);
+        jd_crear_estudiante.setVisible(false);
+        this.setVisible(true);
+        this.pack();
+        this.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btn_estu_r_MouseClicked
+
+    private void cb_listaB_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_listaB_ActionPerformed
+        seleccionado = autobuses.get(cb_listaB_.getSelectedIndex());
+    }//GEN-LAST:event_cb_listaB_ActionPerformed
+
+    private void jmi_simulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_simulacionActionPerformed
+        this.setVisible(false);
+        jd_simulacion.setModal(true);
+        jd_simulacion.pack();
+        jd_simulacion.setLocationRelativeTo(this);
+        jd_simulacion.setVisible(true);
+    }//GEN-LAST:event_jmi_simulacionActionPerformed
+
+    private void btn_simulacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simulacionMouseClicked
+        
+    }//GEN-LAST:event_btn_simulacionMouseClicked
+
+    private void btn_tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tablaMouseClicked
+        jd_tabla.setModal(true);
+        jd_tabla.pack();
+        jd_tabla.setLocationRelativeTo(this);
+        jd_tabla.setVisible(true);
+    }//GEN-LAST:event_btn_tablaMouseClicked
+
+    private void btn_tabla_rMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tabla_rMouseClicked
+        jd_tabla.setModal(false);
+        jd_tabla.setVisible(false);
+    }//GEN-LAST:event_btn_tabla_rMouseClicked
+
+    private void btn_sim_r_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_sim_r_MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_sim_r_MouseClicked
 
     /**
      * @param args the command line arguments
@@ -198,7 +741,7 @@ public class Principal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -224,9 +767,38 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Acciion;
+    private javax.swing.JButton btn_color;
+    private javax.swing.JButton btn_crearA_;
+    private javax.swing.JButton btn_crearA_r_;
+    private javax.swing.JButton btn_crearE;
+    private javax.swing.JButton btn_crearP_r;
+    private javax.swing.JButton btn_crear_parada;
+    private javax.swing.JButton btn_estu_r_;
+    private javax.swing.JButton btn_sim_r_;
+    private javax.swing.JButton btn_simulacion;
+    private javax.swing.JButton btn_tabla;
     private javax.swing.JButton btn_tabla_r;
+    private javax.swing.JComboBox<String> cb_listaB_;
+    private javax.swing.JComboBox<String> cb_lista_estudiantes;
+    private javax.swing.JComboBox<String> cb_paradas;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jd_crear_autobus;
     private javax.swing.JDialog jd_crear_estudiante;
     private javax.swing.JDialog jd_crear_parada;
@@ -236,9 +808,19 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_crear_estudiante;
     private javax.swing.JMenuItem jmi_crear_parada;
     private javax.swing.JMenuItem jmi_simulacion;
+    private javax.swing.JSpinner js_angulo;
+    private javax.swing.JSpinner js_distancia;
+    private javax.swing.JSpinner js_edad;
+    private javax.swing.JSpinner js_velA_;
     private javax.swing.JTable jt_tabla;
+    private javax.swing.JTextField tf_ab_numid;
+    private javax.swing.JTextField tf_crearP_nom;
+    private javax.swing.JTextField tf_estu_nom;
+    private javax.swing.JTextField tf_numcuenta;
+    private javax.swing.JTextField tf_placa;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Estudiante> estudiantes = new ArrayList();
     private ArrayList<Autobus> autobuses = new ArrayList();
     private ArrayList<Parada> paradas = new ArrayList();
+    private Autobus seleccionado;
 }
