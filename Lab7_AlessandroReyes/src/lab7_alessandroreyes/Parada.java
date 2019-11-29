@@ -1,12 +1,16 @@
 package lab7_alessandroreyes;
 
-public class Parada {
+import java.io.Serializable;
+
+public class Parada implements Serializable{
     private String nombre;
     private int km;//km
     private double angulo;//rad
     private double coordenadax;
     private double coordenaday;
 
+    private static final long SerialVersionUID=333L;
+    
     public Parada() {
     }
 

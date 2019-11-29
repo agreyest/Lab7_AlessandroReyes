@@ -1,11 +1,15 @@
 package lab7_alessandroreyes;
 
-public class Estudiante {
+import java.io.Serializable;
+
+public class Estudiante implements Serializable{
     private String nombre;
     private int edad;
     private int cuenta;
     private Parada parada;
-
+    
+    private static final long SerialVersionUID=555L;
+    
     public Estudiante() {
     }
 
