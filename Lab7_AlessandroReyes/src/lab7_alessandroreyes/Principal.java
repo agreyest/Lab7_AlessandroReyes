@@ -74,7 +74,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         cb_listaB_ = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jl_EB = new javax.swing.JList<>();
         cb_lista_estudiantes = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -311,14 +311,20 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel12.setText("Escoja el bus");
 
-        cb_listaB_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_listaB_ActionPerformed(evt);
+        cb_listaB_.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_listaB_ItemStateChanged(evt);
             }
         });
 
-        jList1.setModel(new DefaultListModel());
-        jScrollPane2.setViewportView(jList1);
+        jl_EB.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(jl_EB);
+
+        cb_lista_estudiantes.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_lista_estudiantesItemStateChanged(evt);
+            }
+        });
 
         jLabel13.setText("Lista de estudiantes en el bus");
 
@@ -698,11 +704,11 @@ public class Principal extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
     }//GEN-LAST:event_btn_estu_r_MouseClicked
 
-    private void cb_listaB_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_listaB_ActionPerformed
-        seleccionado = autobuses.get(cb_listaB_.getSelectedIndex());
-    }//GEN-LAST:event_cb_listaB_ActionPerformed
-
     private void jmi_simulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_simulacionActionPerformed
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(autobuses.toArray());
+        cb_listaB_.setModel(modelo);
+        DefaultComboBoxModel modelo2 = new DefaultComboBoxModel(estudiantes.toArray());
+        cb_lista_estudiantes.setModel(modelo2);
         this.setVisible(false);
         jd_simulacion.setModal(true);
         jd_simulacion.pack();
@@ -727,8 +733,37 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_tabla_rMouseClicked
 
     private void btn_sim_r_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_sim_r_MouseClicked
-        // TODO add your handling code here:
+        jd_simulacion.setModal(false);
+        jd_simulacion.setVisible(false);
+        this.setVisible(true);
+        this.pack();
+        this.setLocationRelativeTo(this);
     }//GEN-LAST:event_btn_sim_r_MouseClicked
+
+    private void cb_listaB_ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_listaB_ItemStateChanged
+        seleccionado = autobuses.get(cb_listaB_.getSelectedIndex());
+        DefaultListModel modeloLISTA = (DefaultListModel) jl_EB.getModel();
+        modeloLISTA.removeAllElements();
+        jl_EB.setModel(modeloLISTA);
+        modeloLISTA.addElement(seleccionado.getEstudiantes().toArray());
+        jl_EB.setModel(modeloLISTA);
+    }//GEN-LAST:event_cb_listaB_ItemStateChanged
+
+    private void cb_lista_estudiantesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_lista_estudiantesItemStateChanged
+        int x=0;
+        for (int i = 0; i < autobuses.size(); i++) {
+            if(seleccionado == autobuses.get(i)){
+                x = i;
+            }
+        }
+        autobuses.get(x).setEstudiante(estudiantes.get(cb_lista_estudiantes.getSelectedIndex()));
+        
+        DefaultListModel modeloLISTA = (DefaultListModel) jl_EB.getModel();
+        modeloLISTA.removeAllElements();
+        jl_EB.setModel(modeloLISTA);
+        modeloLISTA.addElement(autobuses.get(x).getEstudiantes().toArray());
+        jl_EB.setModel(modeloLISTA);
+    }//GEN-LAST:event_cb_lista_estudiantesItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -795,7 +830,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -804,6 +838,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crear_parada;
     private javax.swing.JDialog jd_simulacion;
     private javax.swing.JDialog jd_tabla;
+    private javax.swing.JList<String> jl_EB;
     private javax.swing.JMenuItem jmi_crear_autobus;
     private javax.swing.JMenuItem jmi_crear_estudiante;
     private javax.swing.JMenuItem jmi_crear_parada;

@@ -62,13 +62,13 @@ public class Autobus implements Serializable{
     public void setEstudiantes(ArrayList<Estudiante> estudiantes) {
         this.estudiantes = estudiantes;
     }
-    public void setEstudiantes(Estudiante estudiantes) {
-        this.estudiantes.add(estudiantes);
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiantes.add(estudiante);
     }
 
     @Override
     public String toString() {
-        return numid + ", color= " + color;
+        return numid + ", "+placa;
     }
     
 }
