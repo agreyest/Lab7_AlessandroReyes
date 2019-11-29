@@ -752,7 +752,7 @@ public class Principal extends javax.swing.JFrame {
     private void cb_lista_estudiantesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_lista_estudiantesItemStateChanged
         int x=0;
         for (int i = 0; i < autobuses.size(); i++) {
-            if(seleccionado == autobuses.get(i)){
+            if(seleccionado.equals(autobuses.get(i))){
                 x = i;
             }
         }
