@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lab7_alessandroreyes;
 
-/**
- *
- * @author Dell
- */
+import java.util.ArrayList;
+
 public class Principal extends javax.swing.JFrame {
 
     /**
@@ -16,6 +9,17 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        AdminEstudiante e = new AdminEstudiante("./Estudiantes.cbm");
+        e.cargarArchivo();
+        estudiantes = e.getListaEstudiantes();
+        
+        AdminAutobus a = new AdminAutobus("./Autobuses.cbm");
+        a.cargarArchivo();
+        autobuses = a.getListaAutobus();
+        
+        AdminParada p = new AdminParada("./Paradas.cbm");
+        p.cargarArchivo();
+        paradas = p.getListaParadas();
     }
 
     /**
@@ -27,13 +31,126 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_crear_parada = new javax.swing.JDialog();
+        jd_crear_autobus = new javax.swing.JDialog();
+        jd_crear_estudiante = new javax.swing.JDialog();
+        jd_simulacion = new javax.swing.JDialog();
+        jd_tabla = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_tabla = new javax.swing.JTable();
+        btn_tabla_r = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Acciion = new javax.swing.JMenu();
+        jmi_crear_parada = new javax.swing.JMenuItem();
+        jmi_crear_autobus = new javax.swing.JMenuItem();
+        jmi_crear_estudiante = new javax.swing.JMenuItem();
         jmi_simulacion = new javax.swing.JMenuItem();
 
+        javax.swing.GroupLayout jd_crear_paradaLayout = new javax.swing.GroupLayout(jd_crear_parada.getContentPane());
+        jd_crear_parada.getContentPane().setLayout(jd_crear_paradaLayout);
+        jd_crear_paradaLayout.setHorizontalGroup(
+            jd_crear_paradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 749, Short.MAX_VALUE)
+        );
+        jd_crear_paradaLayout.setVerticalGroup(
+            jd_crear_paradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_crear_autobusLayout = new javax.swing.GroupLayout(jd_crear_autobus.getContentPane());
+        jd_crear_autobus.getContentPane().setLayout(jd_crear_autobusLayout);
+        jd_crear_autobusLayout.setHorizontalGroup(
+            jd_crear_autobusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 746, Short.MAX_VALUE)
+        );
+        jd_crear_autobusLayout.setVerticalGroup(
+            jd_crear_autobusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 518, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_crear_estudianteLayout = new javax.swing.GroupLayout(jd_crear_estudiante.getContentPane());
+        jd_crear_estudiante.getContentPane().setLayout(jd_crear_estudianteLayout);
+        jd_crear_estudianteLayout.setHorizontalGroup(
+            jd_crear_estudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 747, Short.MAX_VALUE)
+        );
+        jd_crear_estudianteLayout.setVerticalGroup(
+            jd_crear_estudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 524, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_simulacionLayout = new javax.swing.GroupLayout(jd_simulacion.getContentPane());
+        jd_simulacion.getContentPane().setLayout(jd_simulacionLayout);
+        jd_simulacionLayout.setHorizontalGroup(
+            jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 752, Short.MAX_VALUE)
+        );
+        jd_simulacionLayout.setVerticalGroup(
+            jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 526, Short.MAX_VALUE)
+        );
+
+        jt_tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Parada", "Tiempo", "Estudiantes"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Double.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jt_tabla);
+
+        btn_tabla_r.setText("Regresar");
+
+        javax.swing.GroupLayout jd_tablaLayout = new javax.swing.GroupLayout(jd_tabla.getContentPane());
+        jd_tabla.getContentPane().setLayout(jd_tablaLayout);
+        jd_tablaLayout.setHorizontalGroup(
+            jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_tablaLayout.createSequentialGroup()
+                .addGroup(jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_tablaLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_tablaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_tabla_r, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        jd_tablaLayout.setVerticalGroup(
+            jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_tablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(btn_tabla_r, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         Acciion.setText("Accion");
+
+        jmi_crear_parada.setText("Crear parada");
+        Acciion.add(jmi_crear_parada);
+
+        jmi_crear_autobus.setText("Crear autobus");
+        Acciion.add(jmi_crear_autobus);
+
+        jmi_crear_estudiante.setText("Crear Estudiante");
+        Acciion.add(jmi_crear_estudiante);
 
         jmi_simulacion.setText("Simulacion");
         Acciion.add(jmi_simulacion);
@@ -55,6 +172,20 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        AdminEstudiante e = new AdminEstudiante("./Estudiantes.cbm");
+        e.setListaAutobus(estudiantes);
+        e.escribirArchivo();
+
+        AdminAutobus a = new AdminAutobus("./Autobuses.cbm");
+        a.setListaAutobus(autobuses);
+        a.escribirArchivo();
+
+        AdminParada p = new AdminParada("./Paradas.cbm");
+        p.setListaParadas(paradas);
+        p.escribirArchivo();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -93,7 +224,21 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Acciion;
+    private javax.swing.JButton btn_tabla_r;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JDialog jd_crear_autobus;
+    private javax.swing.JDialog jd_crear_estudiante;
+    private javax.swing.JDialog jd_crear_parada;
+    private javax.swing.JDialog jd_simulacion;
+    private javax.swing.JDialog jd_tabla;
+    private javax.swing.JMenuItem jmi_crear_autobus;
+    private javax.swing.JMenuItem jmi_crear_estudiante;
+    private javax.swing.JMenuItem jmi_crear_parada;
     private javax.swing.JMenuItem jmi_simulacion;
+    private javax.swing.JTable jt_tabla;
     // End of variables declaration//GEN-END:variables
+    private ArrayList<Estudiante> estudiantes = new ArrayList();
+    private ArrayList<Autobus> autobuses = new ArrayList();
+    private ArrayList<Parada> paradas = new ArrayList();
 }
