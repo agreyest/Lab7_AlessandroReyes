@@ -55,6 +55,7 @@ public class AdministrarRuta extends Thread{
         while(vive){
             if(avanzar){
                 int x = ((int)Distancia(x1, x2, y1, y2, velocidad) );
+                System.out.println("x "+x);
                 progBar_d.setValue(x);
                 progBar_d.setString(Integer.toString(progBar_d.getValue()) + "Kilometros");
             }
@@ -66,7 +67,13 @@ public class AdministrarRuta extends Thread{
     }
     public double Distancia(double x1, double x2, double y1, double y2, double velocidad){
         double d=0;
+        System.out.println("x1 : " +x1);
+        System.out.println("x2 : " +x2);
+        System.out.println("y1 : "+y1);
+        System.out.println("y2 : "+y2);
+        System.out.println("vel : "+velocidad);
         d= (Math.sqrt(Math.pow(x2-x1, 2)+ Math.pow(y2-y1, 2))) /velocidad;
+        System.out.println("d: "+d);
         return d;
     }
 }
