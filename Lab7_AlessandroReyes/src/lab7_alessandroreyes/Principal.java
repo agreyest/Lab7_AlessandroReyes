@@ -81,7 +81,7 @@ public class Principal extends javax.swing.JFrame {
         btn_sim_r_ = new javax.swing.JButton();
         btn_simulacion = new javax.swing.JButton();
         btn_tabla = new javax.swing.JButton();
-        pg_d = new javax.swing.JProgressBar();
+        pb_d = new javax.swing.JProgressBar();
         jd_tabla = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_tabla = new javax.swing.JTable();
@@ -359,20 +359,17 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jd_simulacionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pg_d, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pb_d, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jd_simulacionLayout.createSequentialGroup()
                         .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_simulacionLayout.createSequentialGroup()
                                 .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jd_simulacionLayout.createSequentialGroup()
-                                        .addComponent(jLabel14)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE))
-                                    .addGroup(jd_simulacionLayout.createSequentialGroup()
-                                        .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel12)
-                                            .addComponent(cb_lista_estudiantes, 0, 260, Short.MAX_VALUE)
-                                            .addComponent(cb_listaB_, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel14)
+                                    .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel12)
+                                        .addComponent(cb_lista_estudiantes, 0, 260, Short.MAX_VALUE)
+                                        .addComponent(cb_listaB_, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel13)))
@@ -401,7 +398,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(cb_lista_estudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                .addComponent(pg_d, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pb_d, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(123, 123, 123)
                 .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_sim_r_)
@@ -724,7 +721,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_simulacionActionPerformed
 
     private void btn_simulacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simulacionMouseClicked
-        
+        int ini=0;
+        for (int i = 0; i < paradas.size(); i++) {
+            if(paradas.get(i).getNombre().equals("Unitec")){
+                ini = i;
+            }
+        }
+        AdministrarRuta ar = new AdministrarRuta(pb_d, paradas.get(ini).getCoordenadax(), paradas.get(ini).getCoordenaday(),
+                estudiantes.get(cb_lista_estudiantes.getSelectedIndex()).getParada().getCoordenadax(), 
+        estudiantes.get(cb_lista_estudiantes.getSelectedIndex()).getParada().getCoordenaday(), 
+                autobuses.get(cb_listaB_.getSelectedIndex()).getVelocidad());
+        ar.start();
     }//GEN-LAST:event_btn_simulacionMouseClicked
 
     private void btn_tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tablaMouseClicked
@@ -858,7 +865,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSpinner js_edad;
     private javax.swing.JSpinner js_velA_;
     private javax.swing.JTable jt_tabla;
-    private javax.swing.JProgressBar pg_d;
+    private javax.swing.JProgressBar pb_d;
     private javax.swing.JTextField tf_ab_numid;
     private javax.swing.JTextField tf_crearP_nom;
     private javax.swing.JTextField tf_estu_nom;

@@ -3,7 +3,7 @@ package lab7_alessandroreyes;
 import javax.swing.JProgressBar;
 import javax.swing.JSpinner;
 
-public class AdministrarRuta {
+public class AdministrarRuta extends Thread{
     private JProgressBar progBar_d;
     private double x1;
     private double x2;
@@ -54,8 +54,8 @@ public class AdministrarRuta {
     public void run(){
         while(vive){
             if(avanzar){
-                Principal p = new Principal();
-                progBar_d.setValue((Distancia(x1, x2, y1, y2, velocidad)));
+                int x = ((int)Distancia(x1, x2, y1, y2, velocidad) );
+                progBar_d.setValue(x);
                 progBar_d.setString(Integer.toString(progBar_d.getValue()) + "Kilometros");
             }
             try {

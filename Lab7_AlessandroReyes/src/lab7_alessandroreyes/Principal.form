@@ -335,24 +335,19 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pg_d" max="32767" attributes="0"/>
+                      <Component id="pb_d" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="210" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cb_lista_estudiantes" alignment="0" pref="260" max="32767" attributes="0"/>
-                                              <Component id="cb_listaB_" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="43" max="32767" attributes="0"/>
+                                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cb_lista_estudiantes" alignment="0" pref="260" max="32767" attributes="0"/>
+                                          <Component id="cb_listaB_" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jScrollPane2" min="-2" pref="312" max="-2" attributes="0"/>
                                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
@@ -392,7 +387,7 @@
                       <Component id="jScrollPane2" min="-2" pref="212" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="101" max="32767" attributes="0"/>
-                  <Component id="pg_d" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="pb_d" min="-2" pref="25" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn_sim_r_" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -489,7 +484,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_tablaMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="pg_d">
+        <Component class="javax.swing.JProgressBar" name="pb_d">
         </Component>
       </SubComponents>
     </Container>
