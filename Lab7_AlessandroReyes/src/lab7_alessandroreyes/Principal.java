@@ -81,6 +81,7 @@ public class Principal extends javax.swing.JFrame {
         btn_sim_r_ = new javax.swing.JButton();
         btn_simulacion = new javax.swing.JButton();
         btn_tabla = new javax.swing.JButton();
+        pg_d = new javax.swing.JProgressBar();
         jd_tabla = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_tabla = new javax.swing.JTable();
@@ -358,27 +359,30 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jd_simulacionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pg_d, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jd_simulacionLayout.createSequentialGroup()
                         .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_simulacionLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE))
+                                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE))
+                                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                                        .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel12)
+                                            .addComponent(cb_lista_estudiantes, 0, 260, Short.MAX_VALUE)
+                                            .addComponent(cb_listaB_, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13)))
                             .addGroup(jd_simulacionLayout.createSequentialGroup()
-                                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel12)
-                                    .addComponent(cb_lista_estudiantes, 0, 260, Short.MAX_VALUE)
-                                    .addComponent(cb_listaB_, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13)))
-                    .addGroup(jd_simulacionLayout.createSequentialGroup()
-                        .addComponent(btn_sim_r_)
-                        .addGap(209, 209, 209)
-                        .addComponent(btn_tabla)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_simulacion)))
-                .addContainerGap())
+                                .addComponent(btn_sim_r_)
+                                .addGap(209, 209, 209)
+                                .addComponent(btn_tabla)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_simulacion)))
+                        .addContainerGap())))
         );
         jd_simulacionLayout.setVerticalGroup(
             jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,7 +400,9 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cb_lista_estudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(pg_d, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123)
                 .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_sim_r_)
                     .addComponent(btn_simulacion)
@@ -709,6 +715,7 @@ public class Principal extends javax.swing.JFrame {
         cb_listaB_.setModel(modelo);
         DefaultComboBoxModel modelo2 = new DefaultComboBoxModel(estudiantes.toArray());
         cb_lista_estudiantes.setModel(modelo2);
+        
         this.setVisible(false);
         jd_simulacion.setModal(true);
         jd_simulacion.pack();
@@ -745,7 +752,9 @@ public class Principal extends javax.swing.JFrame {
         DefaultListModel modeloLISTA = (DefaultListModel) jl_EB.getModel();
         modeloLISTA.removeAllElements();
         jl_EB.setModel(modeloLISTA);
-        modeloLISTA.addElement(seleccionado.getEstudiantes().toArray());
+        for (int i = 0; i < seleccionado.getEstudiantes().size(); i++) {
+            modeloLISTA.addElement(seleccionado.getEstudiantes().get(i));
+        }
         jl_EB.setModel(modeloLISTA);
     }//GEN-LAST:event_cb_listaB_ItemStateChanged
 
@@ -757,11 +766,12 @@ public class Principal extends javax.swing.JFrame {
             }
         }
         autobuses.get(x).setEstudiante(estudiantes.get(cb_lista_estudiantes.getSelectedIndex()));
-        
         DefaultListModel modeloLISTA = (DefaultListModel) jl_EB.getModel();
         modeloLISTA.removeAllElements();
         jl_EB.setModel(modeloLISTA);
-        modeloLISTA.addElement(autobuses.get(x).getEstudiantes().toArray());
+        for (int i = 0; i < autobuses.get(x).getEstudiantes().size(); i++) {
+            modeloLISTA.addElement(autobuses.get(x).getEstudiantes().get(i));
+        }
         jl_EB.setModel(modeloLISTA);
     }//GEN-LAST:event_cb_lista_estudiantesItemStateChanged
 
@@ -848,6 +858,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSpinner js_edad;
     private javax.swing.JSpinner js_velA_;
     private javax.swing.JTable jt_tabla;
+    private javax.swing.JProgressBar pg_d;
     private javax.swing.JTextField tf_ab_numid;
     private javax.swing.JTextField tf_crearP_nom;
     private javax.swing.JTextField tf_estu_nom;
